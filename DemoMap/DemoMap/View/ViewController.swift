@@ -10,11 +10,19 @@ import MapKit
 
 class ViewController: UIViewController {
     
+    // MARK: - Views
+    
     private var mapView: MKMapView = MKMapView()
+    private var bottomButton: UIButton = UIButton()
+    
+    // MARK: - Properties
+    
     private var presenter: MapPresenter = {
         let service = MapService()
         return MapPresenter(service: service)
     }()
+    
+    // MARK: - Life Cycle Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,10 +31,13 @@ class ViewController: UIViewController {
         
         LocationManager.shared.requestLocation()
         setupMapView()
+        setupBottomButton()
         
         presenter.getStations()
     }
 }
+
+// MARK: - Private Methods
 
 private extension ViewController {
     
@@ -50,17 +61,47 @@ private extension ViewController {
         */
         
         mapView.register(MKAnnotationView.self, forAnnotationViewWithReuseIdentifier: "AnnotationView")
-        
+        mapView.showsUserLocation = true
         mapView.delegate = self
 
-        let center = CLLocationCoordinate2D(latitude: 41.0082, longitude: 28.9784)
+        let userCoordinate = LocationManager.shared.manager.location?.coordinate
+        let center = CLLocationCoordinate2D(
+            latitude: userCoordinate?.latitude ?? 41.0082,
+            longitude: userCoordinate?.longitude ?? 28.9784
+        )
         mapView.region = .init(center: center, latitudinalMeters: 10000.0, longitudinalMeters: 10000.0)
+    }
+    
+    func setupBottomButton() {
+        view.addSubview(bottomButton)
         
-        mapView.showsUserLocation = true
+        let buttonHeight = 60.0
         
+        bottomButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            bottomButton.heightAnchor.constraint(equalToConstant: buttonHeight),
+            bottomButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16.0),
+            bottomButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16.0),
+            bottomButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -36.0)
+        ])
         
+        let attributedTitle = NSAttributedString(
+            string: "List Trips",
+            attributes: [
+                .font : UIFont.systemFont(ofSize: 20.0, weight: .bold),
+                .foregroundColor: UIColor.white
+            ]
+        )
+        bottomButton.setAttributedTitle(attributedTitle, for: .normal)
+        bottomButton.backgroundColor = .systemIndigo
+        bottomButton.layer.cornerRadius = buttonHeight / 2
+        
+        let buttonTapGesture = UITapGestureRecognizer(target: self, action: #selector(didBottomButtonTapped))
+        bottomButton.addGestureRecognizer(buttonTapGesture)
     }
 }
+
+// MARK: - MKMapViewDelegate
 
 extension ViewController: MKMapViewDelegate {
     
@@ -80,27 +121,71 @@ extension ViewController: MKMapViewDelegate {
         viewFor annotation: MKAnnotation
     ) -> MKAnnotationView? {
         
-        guard annotation is StationAnnotation else { return nil }
-        
+        guard let annotation = annotation as? StationAnnotation else { return nil }
         let annotationView = mapView.dequeueReusableAnnotationView(
             withIdentifier: "AnnotationView",
             for: annotation
         )
-
+        
         annotationView.image = UIImage(named: "Point")
+        
+        annotationView.canShowCallout = true
+        let detailLabel = UILabel()
+        detailLabel.text = "\(annotation.trip) Trips"
+        annotationView.detailCalloutAccessoryView = detailLabel
         
         return annotationView
     }
+    
+    func mapView(
+        _ mapView: MKMapView,
+        didSelect view: MKAnnotationView
+    ) {
+        if view.annotation is StationAnnotation {
+            view.updateImage(with: UIImage(named: "SelectedPoint"))
+        }
+    }
+    
+    func mapView(
+        _ mapView: MKMapView,
+        didDeselect view: MKAnnotationView
+    ) {
+        if view.annotation is StationAnnotation {
+            view.updateImage(with: UIImage(named: "Point"))
+        }
+    }
 }
+
+// MARK: - Actions
+
+private extension ViewController {
+    
+    @objc func didBottomButtonTapped() {
+        guard let selectedStation = mapView.selectedAnnotations.first as? StationAnnotation else { return }
+        presenter.didBottomButtonTapped(with: selectedStation.id)
+    }
+}
+
+// MARK: - MapViewDelegate
 
 extension ViewController: MapViewDelegate {
     
     func showMapPoints(annotations: [StationAnnotation]) {
         
-        mapView.addAnnotations(annotations)
+        DispatchQueue.main.async { [weak self] in
+            self?.mapView.addAnnotations(annotations)
+        }
     }
     
     func showErrorDialog(message: String) {
         print("Error")
+    }
+    
+    func navigateToTripList(station: Station) {
+        let viewController = TripListViewController()
+        let service = TripListService()
+        let presenter = TripListPresenter(service: service, station: station)
+        viewController.presenter = presenter
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }

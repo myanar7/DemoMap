@@ -8,9 +8,15 @@
 import Foundation
 
 class Service {
+    
+    enum HTTPMethod: String {
+        case GET = "GET"
+        case POST = "POST"
+    }
+    
     private let session = URLSession.shared
     
-    func request<T:Decodable>(endpoint: String, method: String, completion: @escaping (Result<T,Error>) -> Void) {
+    internal func request<T:Decodable>(endpoint: String, method: String, completion: @escaping (Result<T,Error>) -> Void) {
         guard let url = URL(string: endpoint) else { return }
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = method

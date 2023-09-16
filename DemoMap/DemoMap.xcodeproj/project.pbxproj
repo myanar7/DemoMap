@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AC0F645A2AB375CC00CE59A1 /* CollectionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0F64592AB375CC00CE59A1 /* CollectionExtensions.swift */; };
+		AC0F645A2AB375CC00CE59A1 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0F64592AB375CC00CE59A1 /* StringExtensions.swift */; };
 		ACA153D12AB20B82003E0C23 /* MapPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA153D02AB20B82003E0C23 /* MapPresenter.swift */; };
 		ACA153D32AB20C38003E0C23 /* MapService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA153D22AB20C38003E0C23 /* MapService.swift */; };
 		ACA153D52AB21181003E0C23 /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA153D42AB21181003E0C23 /* Station.swift */; };
@@ -21,10 +21,14 @@
 		ACBE9B842AB103B00083EA68 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACBE9B822AB103B00083EA68 /* LaunchScreen.storyboard */; };
 		ACBE9B8D2AB103E90083EA68 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACBE9B8C2AB103E90083EA68 /* MapKit.framework */; };
 		ACBE9B962AB1162E0083EA68 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBE9B952AB1162E0083EA68 /* LocationManager.swift */; };
+		ACC9210F2AB5F222009BBE0F /* MKAnnotationViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC9210E2AB5F222009BBE0F /* MKAnnotationViewExtensions.swift */; };
+		ACC921112AB60509009BBE0F /* TripListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC921102AB60509009BBE0F /* TripListViewController.swift */; };
+		ACC921132AB65419009BBE0F /* TripListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC921122AB65419009BBE0F /* TripListPresenter.swift */; };
+		ACC921152AB6580A009BBE0F /* TripListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC921142AB6580A009BBE0F /* TripListService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		AC0F64592AB375CC00CE59A1 /* CollectionExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionExtensions.swift; sourceTree = "<group>"; };
+		AC0F64592AB375CC00CE59A1 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		ACA153D02AB20B82003E0C23 /* MapPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPresenter.swift; sourceTree = "<group>"; };
 		ACA153D22AB20C38003E0C23 /* MapService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapService.swift; sourceTree = "<group>"; };
 		ACA153D42AB21181003E0C23 /* Station.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
@@ -40,6 +44,10 @@
 		ACBE9B852AB103B00083EA68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ACBE9B8C2AB103E90083EA68 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		ACBE9B952AB1162E0083EA68 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		ACC9210E2AB5F222009BBE0F /* MKAnnotationViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKAnnotationViewExtensions.swift; sourceTree = "<group>"; };
+		ACC921102AB60509009BBE0F /* TripListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripListViewController.swift; sourceTree = "<group>"; };
+		ACC921122AB65419009BBE0F /* TripListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripListPresenter.swift; sourceTree = "<group>"; };
+		ACC921142AB6580A009BBE0F /* TripListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripListService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				ACBE9B7B2AB103B00083EA68 /* ViewController.swift */,
+				ACC921102AB60509009BBE0F /* TripListViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -133,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				ACA153D02AB20B82003E0C23 /* MapPresenter.swift */,
+				ACC921122AB65419009BBE0F /* TripListPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -151,6 +161,7 @@
 			children = (
 				AC0F64582AB3680200CE59A1 /* Base */,
 				ACA153D22AB20C38003E0C23 /* MapService.swift */,
+				ACC921142AB6580A009BBE0F /* TripListService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -159,7 +170,8 @@
 			isa = PBXGroup;
 			children = (
 				ACBE9B952AB1162E0083EA68 /* LocationManager.swift */,
-				AC0F64592AB375CC00CE59A1 /* CollectionExtensions.swift */,
+				AC0F64592AB375CC00CE59A1 /* StringExtensions.swift */,
+				ACC9210E2AB5F222009BBE0F /* MKAnnotationViewExtensions.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -235,14 +247,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACC921132AB65419009BBE0F /* TripListPresenter.swift in Sources */,
+				ACC9210F2AB5F222009BBE0F /* MKAnnotationViewExtensions.swift in Sources */,
 				ACBE9B962AB1162E0083EA68 /* LocationManager.swift in Sources */,
 				ACBE9B7C2AB103B00083EA68 /* ViewController.swift in Sources */,
 				ACA153D32AB20C38003E0C23 /* MapService.swift in Sources */,
 				ACA153D12AB20B82003E0C23 /* MapPresenter.swift in Sources */,
 				ACBE9B782AB103B00083EA68 /* AppDelegate.swift in Sources */,
-				AC0F645A2AB375CC00CE59A1 /* CollectionExtensions.swift in Sources */,
+				AC0F645A2AB375CC00CE59A1 /* StringExtensions.swift in Sources */,
 				ACA153D92AB2209C003E0C23 /* Service.swift in Sources */,
 				ACA153D72AB211F3003E0C23 /* Trip.swift in Sources */,
+				ACC921152AB6580A009BBE0F /* TripListService.swift in Sources */,
+				ACC921112AB60509009BBE0F /* TripListViewController.swift in Sources */,
 				ACBE9B7A2AB103B00083EA68 /* SceneDelegate.swift in Sources */,
 				ACA153D52AB21181003E0C23 /* Station.swift in Sources */,
 			);
