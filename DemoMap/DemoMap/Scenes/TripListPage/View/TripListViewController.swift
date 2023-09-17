@@ -17,7 +17,6 @@ final class TripListViewController: UIViewController {
     // MARK: - Properties
     
     var station: Station?
-    
     var presenter: TripListPresenter!
     
     // MARK: - Lifecycle Methods
@@ -36,6 +35,7 @@ private extension TripListViewController {
         
         view.backgroundColor = .white
         navigationController?.isNavigationBarHidden = true
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = true
         
         setupTitleLabel()
         setupTableView()
@@ -93,7 +93,6 @@ extension TripListViewController: UITableViewDataSource {
                 by: self.presenter.station.trips[indexPath.row].id
             )
         }
-        
         cell.prepareForReuse()
         return cell
     }
@@ -103,20 +102,25 @@ extension TripListViewController: UITableViewDataSource {
 
 extension TripListViewController: TripListDelegate {
     
+    /// Define the action which will occur when the trip is booked succesfully
     func didTripBooked(stationId: Int) {
         print("Booked")
         DispatchQueue.main.async { [weak self] in
             guard let self else { return }
             self.navigationController?.popViewController(animated: true)
-            guard let mapViewController = self.navigationController?.visibleViewController as? ViewController else { return }
+            guard let mapViewController = self.navigationController?.visibleViewController as? MapViewController else { return }
             mapViewController.presenter.updateBookedStations(with: stationId)
         }
     }
     
+    /// Define the action which will occur when the trip booking is failed
     func didErrorBooking() {
         DispatchQueue.main.async { [weak self] in
-            let alert = AlertDialogViewController()
-            self?.present(alert, animated: true, completion: nil)
+            guard let self else { return }
+            let alertVC = AlertDialogViewController()
+            alertVC.modalPresentationStyle = .overFullScreen
+            alertVC.isModalInPresentation = true
+            self.present(alertVC, animated: true)
         }
     }
 }

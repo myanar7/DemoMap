@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MapViewController.swift
 //  DemoMap
 //
 //  Created by Mustafa Yanar on 12.09.2023.
@@ -8,7 +8,7 @@
 import UIKit
 import MapKit
 
-class ViewController: UIViewController {
+class MapViewController: UIViewController {
     
     // MARK: - Views
     
@@ -27,21 +27,22 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        presenter.delegate = self
-        
         LocationManager.shared.requestLocation()
         setupMapView()
         setupBottomButton()
         
+        presenter.delegate = self
         presenter.getStations()
     }
 }
 
 // MARK: - Private Methods
 
-private extension ViewController {
+private extension MapViewController {
     
     func setupMapView() {
+        
+        // MapView Constraints and Configuration
         mapView.preferredConfiguration = MKStandardMapConfiguration()
         view.addSubview(mapView)
         
@@ -64,6 +65,7 @@ private extension ViewController {
         mapView.showsUserLocation = true
         mapView.delegate = self
 
+        // Initial Coordinate for Map View
         let userCoordinate = LocationManager.shared.manager.location?.coordinate
         let center = CLLocationCoordinate2D(
             latitude: userCoordinate?.latitude ?? 41.0082,
@@ -75,6 +77,7 @@ private extension ViewController {
     func setupBottomButton() {
         view.addSubview(bottomButton)
         
+        // Button Constraints
         let buttonHeight = 60.0
         
         bottomButton.translatesAutoresizingMaskIntoConstraints = false
@@ -85,6 +88,7 @@ private extension ViewController {
             bottomButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -36.0)
         ])
         
+        // Button Configuration
         let attributedTitle = NSAttributedString(
             string: "List Trips",
             attributes: [
@@ -95,7 +99,9 @@ private extension ViewController {
         bottomButton.setAttributedTitle(attributedTitle, for: .normal)
         bottomButton.backgroundColor = .systemIndigo
         bottomButton.layer.cornerRadius = buttonHeight / 2
+        bottomButton.isHidden = true
         
+        // Button Action
         let buttonTapGesture = UITapGestureRecognizer(target: self, action: #selector(didBottomButtonTapped))
         bottomButton.addGestureRecognizer(buttonTapGesture)
     }
@@ -103,7 +109,7 @@ private extension ViewController {
 
 // MARK: - MKMapViewDelegate
 
-extension ViewController: MKMapViewDelegate {
+extension MapViewController: MKMapViewDelegate {
     
     func mapView(
         _ mapView: MKMapView,
@@ -142,9 +148,9 @@ extension ViewController: MKMapViewDelegate {
         _ mapView: MKMapView,
         didSelect view: MKAnnotationView
     ) {
-        //TODO: Add a condition to detect whether station is booked or not
         if view.annotation is StationAnnotation {
             view.updateImage(with: UIImage(named: "SelectedPoint"))
+            bottomButton.isHidden = false
         }
     }
     
@@ -154,13 +160,14 @@ extension ViewController: MKMapViewDelegate {
     ) {
         if view.annotation is StationAnnotation {
             view.updateImage(with: UIImage(named: "Point"))
+            bottomButton.isHidden = true
         }
     }
 }
 
 // MARK: - Actions
 
-private extension ViewController {
+private extension MapViewController {
     
     @objc func didBottomButtonTapped() {
         guard let selectedStation = mapView.selectedAnnotations.first as? StationAnnotation else { return }
@@ -171,7 +178,7 @@ private extension ViewController {
 
 // MARK: - MapViewDelegate
 
-extension ViewController: MapViewDelegate {
+extension MapViewController: MapViewDelegate {
     
     func updateBookedStation(with stationAnnotation: StationAnnotation) {
         DispatchQueue.main.async { [weak self] in
@@ -190,23 +197,7 @@ extension ViewController: MapViewDelegate {
     }
     
     func showErrorDialog(message: String) {
-        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
-            switch action.style{
-                case .default:
-                print("default")
-                
-                case .cancel:
-                print("cancel")
-                
-                case .destructive:
-                print("destructive")
-                
-            @unknown default:
-                fatalError()
-            }
-        }))
-        self.present(alert, animated: true, completion: nil)
+        print(message)
     }
     
     func navigateToTripList(station: Station) {

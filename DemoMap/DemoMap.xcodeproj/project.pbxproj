@@ -15,7 +15,7 @@
 		ACA153D92AB2209C003E0C23 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA153D82AB2209C003E0C23 /* Service.swift */; };
 		ACBE9B782AB103B00083EA68 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBE9B772AB103B00083EA68 /* AppDelegate.swift */; };
 		ACBE9B7A2AB103B00083EA68 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBE9B792AB103B00083EA68 /* SceneDelegate.swift */; };
-		ACBE9B7C2AB103B00083EA68 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBE9B7B2AB103B00083EA68 /* ViewController.swift */; };
+		ACBE9B7C2AB103B00083EA68 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBE9B7B2AB103B00083EA68 /* MapViewController.swift */; };
 		ACBE9B7F2AB103B00083EA68 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACBE9B7D2AB103B00083EA68 /* Main.storyboard */; };
 		ACBE9B812AB103B00083EA68 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACBE9B802AB103B00083EA68 /* Assets.xcassets */; };
 		ACBE9B842AB103B00083EA68 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACBE9B822AB103B00083EA68 /* LaunchScreen.storyboard */; };
@@ -27,6 +27,7 @@
 		ACC921152AB6580A009BBE0F /* TripListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC921142AB6580A009BBE0F /* TripListService.swift */; };
 		ACCB43632AB71B7B009B4A6A /* AlertDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCB43622AB71B7B009B4A6A /* AlertDialogViewController.swift */; };
 		ACCB43652AB73AF9009B4A6A /* TripListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCB43642AB73AF9009B4A6A /* TripListTableViewCell.swift */; };
+		ACCB43672AB73D92009B4A6A /* StationAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCB43662AB73D92009B4A6A /* StationAnnotation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,7 +40,7 @@
 		ACBE9B742AB103B00083EA68 /* DemoMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACBE9B772AB103B00083EA68 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACBE9B792AB103B00083EA68 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		ACBE9B7B2AB103B00083EA68 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		ACBE9B7B2AB103B00083EA68 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		ACBE9B7E2AB103B00083EA68 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		ACBE9B802AB103B00083EA68 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ACBE9B832AB103B00083EA68 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -52,6 +53,7 @@
 		ACC921142AB6580A009BBE0F /* TripListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripListService.swift; sourceTree = "<group>"; };
 		ACCB43622AB71B7B009B4A6A /* AlertDialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDialogViewController.swift; sourceTree = "<group>"; };
 		ACCB43642AB73AF9009B4A6A /* TripListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripListTableViewCell.swift; sourceTree = "<group>"; };
+		ACCB43662AB73D92009B4A6A /* StationAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationAnnotation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,11 +96,9 @@
 		ACBE9B762AB103B00083EA68 /* DemoMap */ = {
 			isa = PBXGroup;
 			children = (
+				ACCB43682AB74207009B4A6A /* Scenes */,
 				ACBE9B942AB115430083EA68 /* Util */,
 				ACBE9B932AB114150083EA68 /* Service */,
-				ACBE9B922AB1140A0083EA68 /* Model */,
-				ACBE9B912AB114030083EA68 /* Presenter */,
-				ACBE9B902AB113F70083EA68 /* View */,
 				ACBE9B8F2AB113EB0083EA68 /* Assets */,
 				ACBE9B8E2AB113D40083EA68 /* Main */,
 				ACBE9B852AB103B00083EA68 /* Info.plist */,
@@ -136,10 +136,7 @@
 		ACBE9B902AB113F70083EA68 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				ACBE9B7B2AB103B00083EA68 /* ViewController.swift */,
-				ACC921102AB60509009BBE0F /* TripListViewController.swift */,
-				ACCB43622AB71B7B009B4A6A /* AlertDialogViewController.swift */,
-				ACCB43642AB73AF9009B4A6A /* TripListTableViewCell.swift */,
+				ACBE9B7B2AB103B00083EA68 /* MapViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -148,7 +145,6 @@
 			isa = PBXGroup;
 			children = (
 				ACA153D02AB20B82003E0C23 /* MapPresenter.swift */,
-				ACC921122AB65419009BBE0F /* TripListPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -157,7 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				ACA153D42AB21181003E0C23 /* Station.swift */,
-				ACA153D62AB211F3003E0C23 /* Trip.swift */,
+				ACCB43662AB73D92009B4A6A /* StationAnnotation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -175,11 +171,82 @@
 		ACBE9B942AB115430083EA68 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				ACCB436F2AB74322009B4A6A /* Views */,
 				ACBE9B952AB1162E0083EA68 /* LocationManager.swift */,
 				AC0F64592AB375CC00CE59A1 /* StringExtensions.swift */,
 				ACC9210E2AB5F222009BBE0F /* MKAnnotationViewExtensions.swift */,
 			);
 			path = Util;
+			sourceTree = "<group>";
+		};
+		ACCB43682AB74207009B4A6A /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				ACCB436A2AB7421E009B4A6A /* MapPage */,
+				ACCB43692AB74211009B4A6A /* TripListPage */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		ACCB43692AB74211009B4A6A /* TripListPage */ = {
+			isa = PBXGroup;
+			children = (
+				ACCB436D2AB74241009B4A6A /* Model */,
+				ACCB436C2AB74230009B4A6A /* Presenter */,
+				ACCB436B2AB7422A009B4A6A /* View */,
+			);
+			path = TripListPage;
+			sourceTree = "<group>";
+		};
+		ACCB436A2AB7421E009B4A6A /* MapPage */ = {
+			isa = PBXGroup;
+			children = (
+				ACBE9B922AB1140A0083EA68 /* Model */,
+				ACBE9B902AB113F70083EA68 /* View */,
+				ACBE9B912AB114030083EA68 /* Presenter */,
+			);
+			path = MapPage;
+			sourceTree = "<group>";
+		};
+		ACCB436B2AB7422A009B4A6A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				ACC921102AB60509009BBE0F /* TripListViewController.swift */,
+				ACCB436E2AB74247009B4A6A /* TableViewCell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		ACCB436C2AB74230009B4A6A /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				ACC921122AB65419009BBE0F /* TripListPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		ACCB436D2AB74241009B4A6A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				ACA153D62AB211F3003E0C23 /* Trip.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		ACCB436E2AB74247009B4A6A /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				ACCB43642AB73AF9009B4A6A /* TripListTableViewCell.swift */,
+			);
+			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		ACCB436F2AB74322009B4A6A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				ACCB43622AB71B7B009B4A6A /* AlertDialogViewController.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -255,9 +322,10 @@
 			files = (
 				ACC921132AB65419009BBE0F /* TripListPresenter.swift in Sources */,
 				ACC9210F2AB5F222009BBE0F /* MKAnnotationViewExtensions.swift in Sources */,
+				ACCB43672AB73D92009B4A6A /* StationAnnotation.swift in Sources */,
 				ACBE9B962AB1162E0083EA68 /* LocationManager.swift in Sources */,
 				ACCB43632AB71B7B009B4A6A /* AlertDialogViewController.swift in Sources */,
-				ACBE9B7C2AB103B00083EA68 /* ViewController.swift in Sources */,
+				ACBE9B7C2AB103B00083EA68 /* MapViewController.swift in Sources */,
 				ACA153D32AB20C38003E0C23 /* MapService.swift in Sources */,
 				ACA153D12AB20B82003E0C23 /* MapPresenter.swift in Sources */,
 				ACCB43652AB73AF9009B4A6A /* TripListTableViewCell.swift in Sources */,

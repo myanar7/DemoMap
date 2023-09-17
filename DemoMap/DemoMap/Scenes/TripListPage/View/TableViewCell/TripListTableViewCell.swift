@@ -78,7 +78,7 @@ final class TripListTableViewCell: UITableViewCell {
         ])
         
         bookButton.setContentCompressionResistancePriority(.required, for: .horizontal)
-        bookButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+        //bookButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
         bookButton.layer.cornerRadius = (contentView.frame.height - 16) / 2
         bookButton.setTitle(buttonText, for: .normal)
         bookButton.backgroundColor = .systemIndigo
