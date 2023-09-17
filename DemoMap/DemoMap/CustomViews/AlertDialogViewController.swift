@@ -105,6 +105,6 @@ private extension AlertDialogViewController {
 @objc private extension AlertDialogViewController {
     
     func dismissAlert() {
-        dismiss(animated: true)
+        dismiss(animated: false)
     }
 }

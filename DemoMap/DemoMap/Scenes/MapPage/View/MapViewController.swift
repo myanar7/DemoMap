@@ -54,7 +54,7 @@ private extension MapViewController {
             mapView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0.0)
         ])
         
-        /* ENTER A TOKEN TO SEE MAP JUST LIKE IN THE ASSIGNMENT FILE (YOUR_TOKEN)
+        /* ENTER A TOKEN TO SEE MAP JUST LIKE IN THE ASSIGNMENT FILE :) (YOUR_TOKEN)
          
         let overlayPath = "https://api.mapbox.com/styles/v1/mapbox/light-v11/tiles/256/{z}/{x}/{y}@2x?access_token=YOUR_TOKEN"
         let overlay = MKTileOverlay(urlTemplate: overlayPath)
