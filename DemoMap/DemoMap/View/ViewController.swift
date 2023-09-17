@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     
     // MARK: - Properties
     
-    private var presenter: MapPresenter = {
+    var presenter: MapPresenter = {
         let service = MapService()
         return MapPresenter(service: service)
     }()
@@ -127,9 +127,10 @@ extension ViewController: MKMapViewDelegate {
             for: annotation
         )
         
-        annotationView.image = UIImage(named: "Point")
+        annotationView.image = annotation.isBooked ? UIImage(named: "Completed") : UIImage(named: "Point")
         
-        annotationView.canShowCallout = true
+        annotationView.isEnabled = !annotation.isBooked
+        annotationView.canShowCallout = !annotation.isBooked
         let detailLabel = UILabel()
         detailLabel.text = "\(annotation.trip) Trips"
         annotationView.detailCalloutAccessoryView = detailLabel
@@ -141,6 +142,7 @@ extension ViewController: MKMapViewDelegate {
         _ mapView: MKMapView,
         didSelect view: MKAnnotationView
     ) {
+        //TODO: Add a condition to detect whether station is booked or not
         if view.annotation is StationAnnotation {
             view.updateImage(with: UIImage(named: "SelectedPoint"))
         }
@@ -162,6 +164,7 @@ private extension ViewController {
     
     @objc func didBottomButtonTapped() {
         guard let selectedStation = mapView.selectedAnnotations.first as? StationAnnotation else { return }
+        mapView.deselectAnnotation(selectedStation, animated: true)
         presenter.didBottomButtonTapped(with: selectedStation.id)
     }
 }
@@ -169,6 +172,15 @@ private extension ViewController {
 // MARK: - MapViewDelegate
 
 extension ViewController: MapViewDelegate {
+    
+    func updateBookedStation(with stationAnnotation: StationAnnotation) {
+        DispatchQueue.main.async { [weak self] in
+            guard let self else { return }
+            guard let annotation = self.mapView.annotations.first(where: { stationAnnotation.isEqual($0) }) else { return }
+            self.mapView.removeAnnotation(annotation)
+            self.mapView.addAnnotation(stationAnnotation)
+        }
+    }
     
     func showMapPoints(annotations: [StationAnnotation]) {
         
@@ -178,7 +190,23 @@ extension ViewController: MapViewDelegate {
     }
     
     func showErrorDialog(message: String) {
-        print("Error")
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+            switch action.style{
+                case .default:
+                print("default")
+                
+                case .cancel:
+                print("cancel")
+                
+                case .destructive:
+                print("destructive")
+                
+            @unknown default:
+                fatalError()
+            }
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
     
     func navigateToTripList(station: Station) {

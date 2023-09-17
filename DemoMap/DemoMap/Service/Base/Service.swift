@@ -16,13 +16,13 @@ class Service {
     
     private let session = URLSession.shared
     
-    internal func request<T:Decodable>(endpoint: String, method: String, completion: @escaping (Result<T,Error>) -> Void) {
+    internal func request<T:Decodable>(endpoint: String, method: String, completion: @escaping (Result<T,URLError>) -> Void) {
         guard let url = URL(string: endpoint) else { return }
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = method
         session.dataTask(with: urlRequest,completionHandler: { (data, response, error) in
             if let error = error {
-                completion(.failure(error))
+                completion(.failure(URLError.init(.unknown)))
                 print(error.localizedDescription)
             } else if let response = response as? HTTPURLResponse, 200 ... 299  ~= response.statusCode {
                 do {
@@ -30,8 +30,11 @@ class Service {
                     let stations = try JSONDecoder().decode(T.self, from: data)
                     completion(.success(stations))
                 } catch {
+                    let error = URLError.init(.cannotDecodeRawData)
                     completion(.failure(error))
                 }
+            } else {
+                completion(.failure(URLError.init(.badURL)))
             }
         }).resume()
     }

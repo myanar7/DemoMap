@@ -25,6 +25,8 @@
 		ACC921112AB60509009BBE0F /* TripListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC921102AB60509009BBE0F /* TripListViewController.swift */; };
 		ACC921132AB65419009BBE0F /* TripListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC921122AB65419009BBE0F /* TripListPresenter.swift */; };
 		ACC921152AB6580A009BBE0F /* TripListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC921142AB6580A009BBE0F /* TripListService.swift */; };
+		ACCB43632AB71B7B009B4A6A /* AlertDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCB43622AB71B7B009B4A6A /* AlertDialogViewController.swift */; };
+		ACCB43652AB73AF9009B4A6A /* TripListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCB43642AB73AF9009B4A6A /* TripListTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +50,8 @@
 		ACC921102AB60509009BBE0F /* TripListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripListViewController.swift; sourceTree = "<group>"; };
 		ACC921122AB65419009BBE0F /* TripListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripListPresenter.swift; sourceTree = "<group>"; };
 		ACC921142AB6580A009BBE0F /* TripListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripListService.swift; sourceTree = "<group>"; };
+		ACCB43622AB71B7B009B4A6A /* AlertDialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDialogViewController.swift; sourceTree = "<group>"; };
+		ACCB43642AB73AF9009B4A6A /* TripListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripListTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +138,8 @@
 			children = (
 				ACBE9B7B2AB103B00083EA68 /* ViewController.swift */,
 				ACC921102AB60509009BBE0F /* TripListViewController.swift */,
+				ACCB43622AB71B7B009B4A6A /* AlertDialogViewController.swift */,
+				ACCB43642AB73AF9009B4A6A /* TripListTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -250,9 +256,11 @@
 				ACC921132AB65419009BBE0F /* TripListPresenter.swift in Sources */,
 				ACC9210F2AB5F222009BBE0F /* MKAnnotationViewExtensions.swift in Sources */,
 				ACBE9B962AB1162E0083EA68 /* LocationManager.swift in Sources */,
+				ACCB43632AB71B7B009B4A6A /* AlertDialogViewController.swift in Sources */,
 				ACBE9B7C2AB103B00083EA68 /* ViewController.swift in Sources */,
 				ACA153D32AB20C38003E0C23 /* MapService.swift in Sources */,
 				ACA153D12AB20B82003E0C23 /* MapPresenter.swift in Sources */,
+				ACCB43652AB73AF9009B4A6A /* TripListTableViewCell.swift in Sources */,
 				ACBE9B782AB103B00083EA68 /* AppDelegate.swift in Sources */,
 				AC0F645A2AB375CC00CE59A1 /* StringExtensions.swift in Sources */,
 				ACA153D92AB2209C003E0C23 /* Service.swift in Sources */,

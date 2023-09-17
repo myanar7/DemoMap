@@ -13,7 +13,7 @@ final class MapService: Service {
         case getStation = "https://demo.voltlines.com/case-study/6/stations"
     }
     
-    func getStations(completion: @escaping (Result<[Station],Error>) -> Void) {
+    func getStations(completion: @escaping (Result<[Station],URLError>) -> Void) {
         request(
             endpoint: Endpoints.getStation.rawValue,
             method: HTTPMethod.GET.rawValue,

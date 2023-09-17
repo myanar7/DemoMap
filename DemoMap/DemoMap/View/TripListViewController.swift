@@ -28,25 +28,6 @@ final class TripListViewController: UIViewController {
     }
 }
 
-// MARK: - TripListDelegate
-
-extension TripListViewController: TripListDelegate {
-    
-    func didTripBooked(stationId: Int) {
-        print("Booked")
-        DispatchQueue.main.async {
-            self.navigationController?.popViewController(animated: true)
-            
-            
-            //TODO: coordinator kullan
-        }
-    }
-    
-    func didErrorBooking() {
-        print("Error")
-    }
-}
-
 // MARK: - Private Methods
 
 private extension TripListViewController {
@@ -118,80 +99,24 @@ extension TripListViewController: UITableViewDataSource {
     }
 }
 
+// MARK: - TripListDelegate
 
-final class TripListTableViewCell: UITableViewCell {
+extension TripListViewController: TripListDelegate {
     
-    private let titleLabel = UILabel()
-    private let timeLabel = UILabel()
-    private let bookButton = UIButton()
-    
-    private let buttonText = "Book"
-    
-    var titleText: String?
-    var timeText: String?
-    var buttonTapped: (() -> Void)?
-    
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupCell()
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setupCell()
+    func didTripBooked(stationId: Int) {
+        print("Booked")
+        DispatchQueue.main.async { [weak self] in
+            guard let self else { return }
+            self.navigationController?.popViewController(animated: true)
+            guard let mapViewController = self.navigationController?.visibleViewController as? ViewController else { return }
+            mapViewController.presenter.updateBookedStations(with: stationId)
+        }
     }
     
-    override func prepareForReuse() {
-        titleLabel.text = titleText
-        timeLabel.text = timeText
-    }
-    
-    private func setupCell() {
-        
-        selectionStyle = .none
-        accessoryType = .none
-        
-        contentView.backgroundColor = UIColor.white
-
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        timeLabel.translatesAutoresizingMaskIntoConstraints = false
-        bookButton.translatesAutoresizingMaskIntoConstraints = false
-
-        contentView.addSubview(titleLabel)
-        contentView.addSubview(timeLabel)
-        contentView.addSubview(bookButton)
-
-        //Leftmost
-        NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
-            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8.0),
-            titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8.0)
-        ])
-        
-        // Rightmost
-        NSLayoutConstraint.activate([
-            bookButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
-            bookButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8.0),
-            bookButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8.0)
-        ])
-        
-        //LeftOfBookButton
-        NSLayoutConstraint.activate([
-            timeLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
-            timeLabel.leadingAnchor.constraint(lessThanOrEqualTo: titleLabel.trailingAnchor, constant: 8.0),
-            timeLabel.trailingAnchor.constraint(equalTo: bookButton.leadingAnchor, constant: -8.0),
-            timeLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8.0)
-        ])
-        
-        bookButton.layer.cornerRadius = bookButton.frame.height / 2
-        bookButton.setTitle(buttonText, for: .normal)
-        bookButton.backgroundColor = .systemIndigo
-        
-        let cellButtonTapGesture = UITapGestureRecognizer(target: self, action: #selector(didBookButtonTapped))
-        bookButton.addGestureRecognizer(cellButtonTapGesture)
-    }
-    
-    @objc private func didBookButtonTapped() {
-        buttonTapped?()
+    func didErrorBooking() {
+        DispatchQueue.main.async { [weak self] in
+            let alert = AlertDialogViewController()
+            self?.present(alert, animated: true, completion: nil)
+        }
     }
 }

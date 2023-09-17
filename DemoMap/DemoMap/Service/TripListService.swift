@@ -8,7 +8,7 @@
 import Foundation
 
 protocol TripListServiceProtocol {
-    func bookTrip(stationId: Int, tripId: Int, completion: @escaping (Result<Trip,Error>) -> Void)
+    func bookTrip(stationId: Int, tripId: Int, completion: @escaping (Result<Trip,URLError>) -> Void)
 }
 
 final class TripListService: Service, TripListServiceProtocol {
@@ -17,7 +17,7 @@ final class TripListService: Service, TripListServiceProtocol {
         case bookTrip = "https://demo.voltlines.com/case-study/6/stations/%ld/trips/%ld"
     }
     
-    func bookTrip(stationId: Int, tripId: Int, completion: @escaping (Result<Trip,Error>) -> Void) {
+    func bookTrip(stationId: Int, tripId: Int, completion: @escaping (Result<Trip,URLError>) -> Void) {
         request(
             endpoint: String(format: Endpoints.bookTrip.rawValue, stationId, tripId),
             method: HTTPMethod.POST.rawValue,
