@@ -54,15 +54,15 @@ private extension AlertDialogViewController {
         // StackView Constraints
         stackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: boxView.topAnchor, constant: 8.0),
-            stackView.bottomAnchor.constraint(equalTo: boxView.bottomAnchor, constant: -8.0),
+            stackView.topAnchor.constraint(equalTo: boxView.topAnchor, constant: 16.0),
+            stackView.bottomAnchor.constraint(equalTo: boxView.bottomAnchor, constant: -16.0),
             stackView.rightAnchor.constraint(equalTo: boxView.rightAnchor, constant: -8.0),
             stackView.leftAnchor.constraint(equalTo: boxView.leftAnchor, constant: 8.0)
         ])
         
         // StackView Configuration
         stackView.axis = .vertical
-        stackView.spacing = 16.0
+        stackView.spacing = 8.0
         stackView.alignment = .leading
         stackView.distribution = .fillProportionally
         
@@ -83,7 +83,7 @@ private extension AlertDialogViewController {
         actionButton.backgroundColor = .systemIndigo
         
         // Alert Action Button Constraints
-        let actionButtonHeight = 64.0
+        let actionButtonHeight = 48.0
         
         actionButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([

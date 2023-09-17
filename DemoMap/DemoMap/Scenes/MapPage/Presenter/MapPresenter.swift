@@ -21,7 +21,6 @@ final class MapPresenter {
     private let service: MapService
     
     private var stations: [Station] = []
-    private var bookedStations: [Station] = []
     
     init(service: MapService) {
         self.service = service

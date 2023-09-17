@@ -8,7 +8,7 @@
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController {
+final class MapViewController: UIViewController {
     
     // MARK: - Views
     
@@ -54,8 +54,9 @@ private extension MapViewController {
             mapView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0.0)
         ])
         
-        /*
-        let overlayPath = "https://tile.openstreetmap.org/{z}/{x}/{y}.png"
+        /* ENTER A TOKEN TO SEE MAP JUST LIKE IN THE ASSIGNMENT FILE (YOUR_TOKEN)
+         
+        let overlayPath = "https://api.mapbox.com/styles/v1/mapbox/light-v11/tiles/256/{z}/{x}/{y}@2x?access_token=YOUR_TOKEN"
         let overlay = MKTileOverlay(urlTemplate: overlayPath)
         overlay.canReplaceMapContent = true
         self.mapView.addOverlay(overlay)
@@ -181,16 +182,17 @@ private extension MapViewController {
 extension MapViewController: MapViewDelegate {
     
     func updateBookedStation(with stationAnnotation: StationAnnotation) {
+        
+        guard let annotation = mapView.annotations.first(where: { stationAnnotation.isEqual($0) }) else { return }
+
         DispatchQueue.main.async { [weak self] in
             guard let self else { return }
-            guard let annotation = self.mapView.annotations.first(where: { stationAnnotation.isEqual($0) }) else { return }
             self.mapView.removeAnnotation(annotation)
             self.mapView.addAnnotation(stationAnnotation)
         }
     }
     
     func showMapPoints(annotations: [StationAnnotation]) {
-        
         DispatchQueue.main.async { [weak self] in
             self?.mapView.addAnnotations(annotations)
         }

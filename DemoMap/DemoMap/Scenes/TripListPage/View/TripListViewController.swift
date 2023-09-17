@@ -16,6 +16,8 @@ final class TripListViewController: UIViewController {
     
     // MARK: - Properties
     
+    private let titleText = "Trips"
+    
     var station: Station?
     var presenter: TripListPresenter!
     
@@ -51,7 +53,7 @@ private extension TripListViewController {
             titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16.0),
         ])
 
-        titleLabel.text = "Trips"
+        titleLabel.text = titleText
         titleLabel.font = UIFont.systemFont(ofSize: 20.0, weight: .bold)
         titleLabel.textColor = .black
     }
@@ -104,7 +106,6 @@ extension TripListViewController: TripListDelegate {
     
     /// Define the action which will occur when the trip is booked succesfully
     func didTripBooked(stationId: Int) {
-        print("Booked")
         DispatchQueue.main.async { [weak self] in
             guard let self else { return }
             self.navigationController?.popViewController(animated: true)
@@ -120,7 +121,7 @@ extension TripListViewController: TripListDelegate {
             let alertVC = AlertDialogViewController()
             alertVC.modalPresentationStyle = .overFullScreen
             alertVC.isModalInPresentation = true
-            self.present(alertVC, animated: true)
+            self.present(alertVC, animated: false)
         }
     }
 }

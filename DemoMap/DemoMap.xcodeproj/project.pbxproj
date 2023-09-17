@@ -96,6 +96,7 @@
 		ACBE9B762AB103B00083EA68 /* DemoMap */ = {
 			isa = PBXGroup;
 			children = (
+				ACCB436F2AB74322009B4A6A /* CustomViews */,
 				ACCB43682AB74207009B4A6A /* Scenes */,
 				ACBE9B942AB115430083EA68 /* Util */,
 				ACBE9B932AB114150083EA68 /* Service */,
@@ -171,7 +172,6 @@
 		ACBE9B942AB115430083EA68 /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				ACCB436F2AB74322009B4A6A /* Views */,
 				ACBE9B952AB1162E0083EA68 /* LocationManager.swift */,
 				AC0F64592AB375CC00CE59A1 /* StringExtensions.swift */,
 				ACC9210E2AB5F222009BBE0F /* MKAnnotationViewExtensions.swift */,
@@ -241,12 +241,12 @@
 			path = TableViewCell;
 			sourceTree = "<group>";
 		};
-		ACCB436F2AB74322009B4A6A /* Views */ = {
+		ACCB436F2AB74322009B4A6A /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
 				ACCB43622AB71B7B009B4A6A /* AlertDialogViewController.swift */,
 			);
-			path = Views;
+			path = CustomViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

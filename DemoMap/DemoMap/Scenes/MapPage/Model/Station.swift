@@ -7,13 +7,6 @@
 
 import Foundation
 
-struct Stations: Codable {
-    var stations: [Station]
-    
-    enum CodingKeys: String, CodingKey { case stations = "stations" }
-}
-
-
 struct Station: Codable {
     var id: Int
     var name: String

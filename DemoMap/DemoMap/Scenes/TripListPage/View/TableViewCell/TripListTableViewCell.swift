@@ -9,15 +9,21 @@ import UIKit
 
 final class TripListTableViewCell: UITableViewCell {
     
+    // MARK: - Views
+    
     private let titleLabel = UILabel()
     private let timeLabel = UILabel()
     private let bookButton = UIButton()
+    
+    // MARK: - Properties
     
     private let buttonText = "Book"
     
     var titleText: String?
     var timeText: String?
     var buttonTapped: (() -> Void)?
+    
+    // MARK: - Lifecycle Methods
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -78,14 +84,15 @@ final class TripListTableViewCell: UITableViewCell {
         ])
         
         bookButton.setContentCompressionResistancePriority(.required, for: .horizontal)
-        //bookButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
-        bookButton.layer.cornerRadius = (contentView.frame.height - 16) / 2
+        bookButton.layer.cornerRadius = (contentView.frame.height - 8) / 2
         bookButton.setTitle(buttonText, for: .normal)
         bookButton.backgroundColor = .systemIndigo
         
         let cellButtonTapGesture = UITapGestureRecognizer(target: self, action: #selector(didBookButtonTapped))
         bookButton.addGestureRecognizer(cellButtonTapGesture)
     }
+    
+    // MARK: - Actions
     
     @objc private func didBookButtonTapped() {
         buttonTapped?()
