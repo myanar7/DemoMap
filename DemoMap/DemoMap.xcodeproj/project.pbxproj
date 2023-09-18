@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AC0F645A2AB375CC00CE59A1 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0F64592AB375CC00CE59A1 /* StringExtensions.swift */; };
+		AC9D18EA2AB835AD00513904 /* DemoMapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9D18E92AB835AD00513904 /* DemoMapTests.swift */; };
 		ACA153D12AB20B82003E0C23 /* MapPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA153D02AB20B82003E0C23 /* MapPresenter.swift */; };
 		ACA153D32AB20C38003E0C23 /* MapService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA153D22AB20C38003E0C23 /* MapService.swift */; };
 		ACA153D52AB21181003E0C23 /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA153D42AB21181003E0C23 /* Station.swift */; };
@@ -30,8 +31,20 @@
 		ACCB43672AB73D92009B4A6A /* StationAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCB43662AB73D92009B4A6A /* StationAnnotation.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		AC9D18EB2AB835AD00513904 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ACBE9B6C2AB103AF0083EA68 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ACBE9B732AB103B00083EA68;
+			remoteInfo = DemoMap;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		AC0F64592AB375CC00CE59A1 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		AC9D18E72AB835AD00513904 /* DemoMapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DemoMapTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC9D18E92AB835AD00513904 /* DemoMapTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoMapTests.swift; sourceTree = "<group>"; };
 		ACA153D02AB20B82003E0C23 /* MapPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPresenter.swift; sourceTree = "<group>"; };
 		ACA153D22AB20C38003E0C23 /* MapService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapService.swift; sourceTree = "<group>"; };
 		ACA153D42AB21181003E0C23 /* Station.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
@@ -57,6 +70,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		AC9D18E42AB835AD00513904 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ACBE9B712AB103B00083EA68 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -76,10 +96,19 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
+		AC9D18E82AB835AD00513904 /* DemoMapTests */ = {
+			isa = PBXGroup;
+			children = (
+				AC9D18E92AB835AD00513904 /* DemoMapTests.swift */,
+			);
+			path = DemoMapTests;
+			sourceTree = "<group>";
+		};
 		ACBE9B6B2AB103AF0083EA68 = {
 			isa = PBXGroup;
 			children = (
 				ACBE9B762AB103B00083EA68 /* DemoMap */,
+				AC9D18E82AB835AD00513904 /* DemoMapTests */,
 				ACBE9B752AB103B00083EA68 /* Products */,
 				ACBE9B8B2AB103E80083EA68 /* Frameworks */,
 			);
@@ -89,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				ACBE9B742AB103B00083EA68 /* DemoMap.app */,
+				AC9D18E72AB835AD00513904 /* DemoMapTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -252,6 +282,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		AC9D18E62AB835AD00513904 /* DemoMapTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AC9D18EF2AB835AD00513904 /* Build configuration list for PBXNativeTarget "DemoMapTests" */;
+			buildPhases = (
+				AC9D18E32AB835AD00513904 /* Sources */,
+				AC9D18E42AB835AD00513904 /* Frameworks */,
+				AC9D18E52AB835AD00513904 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AC9D18EC2AB835AD00513904 /* PBXTargetDependency */,
+			);
+			name = DemoMapTests;
+			productName = DemoMapTests;
+			productReference = AC9D18E72AB835AD00513904 /* DemoMapTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		ACBE9B732AB103B00083EA68 /* DemoMap */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = ACBE9B882AB103B00083EA68 /* Build configuration list for PBXNativeTarget "DemoMap" */;
@@ -279,6 +327,10 @@
 				LastSwiftUpdateCheck = 1400;
 				LastUpgradeCheck = 1400;
 				TargetAttributes = {
+					AC9D18E62AB835AD00513904 = {
+						CreatedOnToolsVersion = 14.0;
+						TestTargetID = ACBE9B732AB103B00083EA68;
+					};
 					ACBE9B732AB103B00083EA68 = {
 						CreatedOnToolsVersion = 14.0;
 					};
@@ -298,11 +350,19 @@
 			projectRoot = "";
 			targets = (
 				ACBE9B732AB103B00083EA68 /* DemoMap */,
+				AC9D18E62AB835AD00513904 /* DemoMapTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		AC9D18E52AB835AD00513904 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ACBE9B722AB103B00083EA68 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -316,6 +376,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		AC9D18E32AB835AD00513904 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC9D18EA2AB835AD00513904 /* DemoMapTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ACBE9B702AB103B00083EA68 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -342,6 +410,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		AC9D18EC2AB835AD00513904 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ACBE9B732AB103B00083EA68 /* DemoMap */;
+			targetProxy = AC9D18EB2AB835AD00513904 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		ACBE9B7D2AB103B00083EA68 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -362,6 +438,42 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		AC9D18ED2AB835AD00513904 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = N5MT76GM36;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mustafayanar.DemoMapTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DemoMap.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DemoMap";
+			};
+			name = Debug;
+		};
+		AC9D18EE2AB835AD00513904 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = N5MT76GM36;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mustafayanar.DemoMapTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DemoMap.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DemoMap";
+			};
+			name = Release;
+		};
 		ACBE9B862AB103B00083EA68 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -541,6 +653,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		AC9D18EF2AB835AD00513904 /* Build configuration list for PBXNativeTarget "DemoMapTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC9D18ED2AB835AD00513904 /* Debug */,
+				AC9D18EE2AB835AD00513904 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		ACBE9B6F2AB103AF0083EA68 /* Build configuration list for PBXProject "DemoMap" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
